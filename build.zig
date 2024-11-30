@@ -26,9 +26,7 @@ pub fn build(b: *std.Build) !void {
         .optimize = optimize,
     })) |dep| {
         module.linkLibrary(dep.artifact("glfw"));
-        @import("glfw").addPaths(module);
         main_tests.linkLibrary(dep.artifact("glfw"));
-        @import("glfw").addPaths(&main_tests.root_module);
     }
 }
 
